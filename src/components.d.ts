@@ -10,8 +10,22 @@ export namespace Components {
     }
     interface XmelisekAmbulanceMenu {
     }
+    interface XmelisekAmbulanceOrderApp {
+        "basePath": string;
+    }
+    interface XmelisekAmbulanceOrderEditor {
+        "entryId": string;
+    }
     interface XmelisekAmbulanceOrderList {
     }
+}
+export interface XmelisekAmbulanceOrderEditorCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLXmelisekAmbulanceOrderEditorElement;
+}
+export interface XmelisekAmbulanceOrderListCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLXmelisekAmbulanceOrderListElement;
 }
 declare global {
     interface HTMLXmelisekAmbulanceEquipListElement extends Components.XmelisekAmbulanceEquipList, HTMLStencilElement {
@@ -26,7 +40,42 @@ declare global {
         prototype: HTMLXmelisekAmbulanceMenuElement;
         new (): HTMLXmelisekAmbulanceMenuElement;
     };
+    interface HTMLXmelisekAmbulanceOrderAppElement extends Components.XmelisekAmbulanceOrderApp, HTMLStencilElement {
+    }
+    var HTMLXmelisekAmbulanceOrderAppElement: {
+        prototype: HTMLXmelisekAmbulanceOrderAppElement;
+        new (): HTMLXmelisekAmbulanceOrderAppElement;
+    };
+    interface HTMLXmelisekAmbulanceOrderEditorElementEventMap {
+        "editor-closed": string;
+    }
+    interface HTMLXmelisekAmbulanceOrderEditorElement extends Components.XmelisekAmbulanceOrderEditor, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLXmelisekAmbulanceOrderEditorElementEventMap>(type: K, listener: (this: HTMLXmelisekAmbulanceOrderEditorElement, ev: XmelisekAmbulanceOrderEditorCustomEvent<HTMLXmelisekAmbulanceOrderEditorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLXmelisekAmbulanceOrderEditorElementEventMap>(type: K, listener: (this: HTMLXmelisekAmbulanceOrderEditorElement, ev: XmelisekAmbulanceOrderEditorCustomEvent<HTMLXmelisekAmbulanceOrderEditorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLXmelisekAmbulanceOrderEditorElement: {
+        prototype: HTMLXmelisekAmbulanceOrderEditorElement;
+        new (): HTMLXmelisekAmbulanceOrderEditorElement;
+    };
+    interface HTMLXmelisekAmbulanceOrderListElementEventMap {
+        "entry-clicked": string;
+        "entry-deleted": string;
+    }
     interface HTMLXmelisekAmbulanceOrderListElement extends Components.XmelisekAmbulanceOrderList, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLXmelisekAmbulanceOrderListElementEventMap>(type: K, listener: (this: HTMLXmelisekAmbulanceOrderListElement, ev: XmelisekAmbulanceOrderListCustomEvent<HTMLXmelisekAmbulanceOrderListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLXmelisekAmbulanceOrderListElementEventMap>(type: K, listener: (this: HTMLXmelisekAmbulanceOrderListElement, ev: XmelisekAmbulanceOrderListCustomEvent<HTMLXmelisekAmbulanceOrderListElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLXmelisekAmbulanceOrderListElement: {
         prototype: HTMLXmelisekAmbulanceOrderListElement;
@@ -35,6 +84,8 @@ declare global {
     interface HTMLElementTagNameMap {
         "xmelisek-ambulance-equip-list": HTMLXmelisekAmbulanceEquipListElement;
         "xmelisek-ambulance-menu": HTMLXmelisekAmbulanceMenuElement;
+        "xmelisek-ambulance-order-app": HTMLXmelisekAmbulanceOrderAppElement;
+        "xmelisek-ambulance-order-editor": HTMLXmelisekAmbulanceOrderEditorElement;
         "xmelisek-ambulance-order-list": HTMLXmelisekAmbulanceOrderListElement;
     }
 }
@@ -43,11 +94,22 @@ declare namespace LocalJSX {
     }
     interface XmelisekAmbulanceMenu {
     }
+    interface XmelisekAmbulanceOrderApp {
+        "basePath"?: string;
+    }
+    interface XmelisekAmbulanceOrderEditor {
+        "entryId"?: string;
+        "onEditor-closed"?: (event: XmelisekAmbulanceOrderEditorCustomEvent<string>) => void;
+    }
     interface XmelisekAmbulanceOrderList {
+        "onEntry-clicked"?: (event: XmelisekAmbulanceOrderListCustomEvent<string>) => void;
+        "onEntry-deleted"?: (event: XmelisekAmbulanceOrderListCustomEvent<string>) => void;
     }
     interface IntrinsicElements {
         "xmelisek-ambulance-equip-list": XmelisekAmbulanceEquipList;
         "xmelisek-ambulance-menu": XmelisekAmbulanceMenu;
+        "xmelisek-ambulance-order-app": XmelisekAmbulanceOrderApp;
+        "xmelisek-ambulance-order-editor": XmelisekAmbulanceOrderEditor;
         "xmelisek-ambulance-order-list": XmelisekAmbulanceOrderList;
     }
 }
@@ -57,6 +119,8 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "xmelisek-ambulance-equip-list": LocalJSX.XmelisekAmbulanceEquipList & JSXBase.HTMLAttributes<HTMLXmelisekAmbulanceEquipListElement>;
             "xmelisek-ambulance-menu": LocalJSX.XmelisekAmbulanceMenu & JSXBase.HTMLAttributes<HTMLXmelisekAmbulanceMenuElement>;
+            "xmelisek-ambulance-order-app": LocalJSX.XmelisekAmbulanceOrderApp & JSXBase.HTMLAttributes<HTMLXmelisekAmbulanceOrderAppElement>;
+            "xmelisek-ambulance-order-editor": LocalJSX.XmelisekAmbulanceOrderEditor & JSXBase.HTMLAttributes<HTMLXmelisekAmbulanceOrderEditorElement>;
             "xmelisek-ambulance-order-list": LocalJSX.XmelisekAmbulanceOrderList & JSXBase.HTMLAttributes<HTMLXmelisekAmbulanceOrderListElement>;
         }
     }

@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, h, EventEmitter, Event } from '@stencil/core';
 
 
 @Component({
@@ -7,6 +7,8 @@ import { Component, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class XmelisekAmbulanceOrderList {
+  @Event({ eventName: "entry-clicked"}) entryClicked: EventEmitter<string>;
+  @Event({ eventName: "entry-deleted"}) entryDeleted: EventEmitter<string>;
 
   orders: any[];
 
@@ -19,7 +21,8 @@ export class XmelisekAmbulanceOrderList {
         equipment: 'Počítač',
         note: "Nový počítač pre doc. Novákovú v Ambulancii Ilkovicovej 4",
         price: 450.99,
-        status: 'Prijatá'
+        status: 'Prijatá',
+        insured: false,
       }, {
         name: 'Nový skalpel',
         orderId: '10002',
@@ -27,7 +30,8 @@ export class XmelisekAmbulanceOrderList {
         equipment: 'Skalpel',
         note: "Skalpel pre doktora Ambroza v hl nemocnici",
         price: 29.99,
-        status: 'V preprave'
+        status: 'V preprave',
+        insured: true,
       }, {
         name: 'Krasna Posteľ',
         orderId: '10003',
@@ -35,7 +39,8 @@ export class XmelisekAmbulanceOrderList {
         equipment: 'Posteľ',
         note: "Potreba upgrade postele pre pacienta v nemocnici",
         price: 1000,
-        status: 'Doručená'
+        status: 'Doručená',
+        insured: false,
       }]
     );
   }
@@ -48,17 +53,21 @@ export class XmelisekAmbulanceOrderList {
       <Host>
         <md-list>
           <md-list-item>
-          <div slot="headline"><h1>{"Objednávky"}</h1></div>
+            <div slot="headline"><h1>{"Objednávky"}</h1></div>
           </md-list-item>
           <md-divider></md-divider>
-          {this.orders.map(order =>
+          {this.orders.map((order, index) =>
             <md-list-item interactive>
               <div slot="headline"><b>{"Názov: "}</b>{order.name}</div>
               <div slot="supporting-text">{"Dátum doručenia: " + this.isoDateToLocale(order.estimatedDelivery)}</div>
               <div slot="supporting-text">{"Status: " + order.status}</div>
               <md-icon slot="start">shopping_cart</md-icon>
-              <md-icon slot="end">edit</md-icon>
-              <md-icon slot="end">delete</md-icon>
+              <md-icon-button slot="end" onClick={() => this.entryClicked.emit(index.toString())}>
+                <md-icon>edit</md-icon>
+              </md-icon-button>
+              <md-icon-button slot="end" onClick={() => this.entryDeleted.emit(index.toString())}>
+                <md-icon>delete</md-icon>
+              </md-icon-button>
             </md-list-item>
           )}
         </md-list>
