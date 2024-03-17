@@ -6,56 +6,58 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    interface XmelisekAmbulanceEquipList {
+    }
+    interface XmelisekAmbulanceMenu {
+    }
+    interface XmelisekAmbulanceOrderList {
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLXmelisekAmbulanceEquipListElement extends Components.XmelisekAmbulanceEquipList, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLXmelisekAmbulanceEquipListElement: {
+        prototype: HTMLXmelisekAmbulanceEquipListElement;
+        new (): HTMLXmelisekAmbulanceEquipListElement;
+    };
+    interface HTMLXmelisekAmbulanceMenuElement extends Components.XmelisekAmbulanceMenu, HTMLStencilElement {
+    }
+    var HTMLXmelisekAmbulanceMenuElement: {
+        prototype: HTMLXmelisekAmbulanceMenuElement;
+        new (): HTMLXmelisekAmbulanceMenuElement;
+    };
+    interface HTMLXmelisekAmbulanceOrderListElement extends Components.XmelisekAmbulanceOrderList, HTMLStencilElement {
+    }
+    var HTMLXmelisekAmbulanceOrderListElement: {
+        prototype: HTMLXmelisekAmbulanceOrderListElement;
+        new (): HTMLXmelisekAmbulanceOrderListElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "xmelisek-ambulance-equip-list": HTMLXmelisekAmbulanceEquipListElement;
+        "xmelisek-ambulance-menu": HTMLXmelisekAmbulanceMenuElement;
+        "xmelisek-ambulance-order-list": HTMLXmelisekAmbulanceOrderListElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    interface XmelisekAmbulanceEquipList {
+    }
+    interface XmelisekAmbulanceMenu {
+    }
+    interface XmelisekAmbulanceOrderList {
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "xmelisek-ambulance-equip-list": XmelisekAmbulanceEquipList;
+        "xmelisek-ambulance-menu": XmelisekAmbulanceMenu;
+        "xmelisek-ambulance-order-list": XmelisekAmbulanceOrderList;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "xmelisek-ambulance-equip-list": LocalJSX.XmelisekAmbulanceEquipList & JSXBase.HTMLAttributes<HTMLXmelisekAmbulanceEquipListElement>;
+            "xmelisek-ambulance-menu": LocalJSX.XmelisekAmbulanceMenu & JSXBase.HTMLAttributes<HTMLXmelisekAmbulanceMenuElement>;
+            "xmelisek-ambulance-order-list": LocalJSX.XmelisekAmbulanceOrderList & JSXBase.HTMLAttributes<HTMLXmelisekAmbulanceOrderListElement>;
         }
     }
 }
