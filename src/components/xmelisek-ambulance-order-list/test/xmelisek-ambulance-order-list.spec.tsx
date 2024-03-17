@@ -7,12 +7,9 @@ describe('xmelisek-ambulance-order-list', () => {
       components: [XmelisekAmbulanceOrderList],
       html: `<xmelisek-ambulance-order-list></xmelisek-ambulance-order-list>`,
     });
-    expect(page.root).toEqualHtml(`
-      <xmelisek-ambulance-order-list>
-        <mock:shadow-root>
-          <slot></slot>
-        </mock:shadow-root>
-      </xmelisek-ambulance-order-list>
-    `);
+    const orderList = page.rootInstance as XmelisekAmbulanceOrderList;
+    const expectedOrders = orderList?.orders?.length + 1; // -1 for the header
+    const items = page.root.shadowRoot.querySelectorAll('md-list-item');
+    expect(items.length).toEqual(expectedOrders);
   });
 });
