@@ -13,7 +13,7 @@ export class XmelisekAmbulanceOrderList {
   private async getOrdersAsync() {
     return await Promise.resolve(
       [{
-        name: 'Nový počítač',
+        name: 'Nový počítač - najlepsi na trhu',
         orderId: '10001',
         estimatedDelivery: new Date(Date.now() + 7 * 1000 * 60 * 60 * 24).toISOString(),
         equipment: 'Počítač',
