@@ -19,6 +19,14 @@ export namespace Components {
     interface XmelisekAmbulanceOrderList {
     }
 }
+export interface XmelisekAmbulanceEquipListCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLXmelisekAmbulanceEquipListElement;
+}
+export interface XmelisekAmbulanceMenuCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLXmelisekAmbulanceMenuElement;
+}
 export interface XmelisekAmbulanceOrderEditorCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLXmelisekAmbulanceOrderEditorElement;
@@ -28,13 +36,35 @@ export interface XmelisekAmbulanceOrderListCustomEvent<T> extends CustomEvent<T>
     target: HTMLXmelisekAmbulanceOrderListElement;
 }
 declare global {
+    interface HTMLXmelisekAmbulanceEquipListElementEventMap {
+        "back": string;
+    }
     interface HTMLXmelisekAmbulanceEquipListElement extends Components.XmelisekAmbulanceEquipList, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLXmelisekAmbulanceEquipListElementEventMap>(type: K, listener: (this: HTMLXmelisekAmbulanceEquipListElement, ev: XmelisekAmbulanceEquipListCustomEvent<HTMLXmelisekAmbulanceEquipListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLXmelisekAmbulanceEquipListElementEventMap>(type: K, listener: (this: HTMLXmelisekAmbulanceEquipListElement, ev: XmelisekAmbulanceEquipListCustomEvent<HTMLXmelisekAmbulanceEquipListElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLXmelisekAmbulanceEquipListElement: {
         prototype: HTMLXmelisekAmbulanceEquipListElement;
         new (): HTMLXmelisekAmbulanceEquipListElement;
     };
+    interface HTMLXmelisekAmbulanceMenuElementEventMap {
+        "card-clicked": string;
+    }
     interface HTMLXmelisekAmbulanceMenuElement extends Components.XmelisekAmbulanceMenu, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLXmelisekAmbulanceMenuElementEventMap>(type: K, listener: (this: HTMLXmelisekAmbulanceMenuElement, ev: XmelisekAmbulanceMenuCustomEvent<HTMLXmelisekAmbulanceMenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLXmelisekAmbulanceMenuElementEventMap>(type: K, listener: (this: HTMLXmelisekAmbulanceMenuElement, ev: XmelisekAmbulanceMenuCustomEvent<HTMLXmelisekAmbulanceMenuElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLXmelisekAmbulanceMenuElement: {
         prototype: HTMLXmelisekAmbulanceMenuElement;
@@ -66,6 +96,7 @@ declare global {
     interface HTMLXmelisekAmbulanceOrderListElementEventMap {
         "entry-clicked": string;
         "entry-deleted": string;
+        "back": string;
     }
     interface HTMLXmelisekAmbulanceOrderListElement extends Components.XmelisekAmbulanceOrderList, HTMLStencilElement {
         addEventListener<K extends keyof HTMLXmelisekAmbulanceOrderListElementEventMap>(type: K, listener: (this: HTMLXmelisekAmbulanceOrderListElement, ev: XmelisekAmbulanceOrderListCustomEvent<HTMLXmelisekAmbulanceOrderListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -91,8 +122,10 @@ declare global {
 }
 declare namespace LocalJSX {
     interface XmelisekAmbulanceEquipList {
+        "onBack"?: (event: XmelisekAmbulanceEquipListCustomEvent<string>) => void;
     }
     interface XmelisekAmbulanceMenu {
+        "onCard-clicked"?: (event: XmelisekAmbulanceMenuCustomEvent<string>) => void;
     }
     interface XmelisekAmbulanceOrderApp {
         "basePath"?: string;
@@ -102,6 +135,7 @@ declare namespace LocalJSX {
         "onEditor-closed"?: (event: XmelisekAmbulanceOrderEditorCustomEvent<string>) => void;
     }
     interface XmelisekAmbulanceOrderList {
+        "onBack"?: (event: XmelisekAmbulanceOrderListCustomEvent<string>) => void;
         "onEntry-clicked"?: (event: XmelisekAmbulanceOrderListCustomEvent<string>) => void;
         "onEntry-deleted"?: (event: XmelisekAmbulanceOrderListCustomEvent<string>) => void;
     }

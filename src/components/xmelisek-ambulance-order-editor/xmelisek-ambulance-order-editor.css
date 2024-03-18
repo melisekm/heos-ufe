@@ -11,13 +11,13 @@
   margin: 5px;
 }
 
-/* .actions {
+.actions {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   gap: 1rem;
 
-} */
+}
 
 /* .stretch-fill {
   flex: 10 0 0;

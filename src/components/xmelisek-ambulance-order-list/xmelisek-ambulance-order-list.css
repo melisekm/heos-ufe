@@ -1,4 +1,14 @@
 :host {
   display: block;
+  --md-list-container-color: #fff;
+
+  
 }
 
+.edit-button {
+  --md-filled-tonal-icon-button-container-color: #93ddd9;
+ } 
+
+.delete-button {
+  --md-filled-tonal-icon-button-container-color: #f58a83;
+}

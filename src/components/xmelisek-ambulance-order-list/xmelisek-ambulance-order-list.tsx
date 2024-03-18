@@ -9,6 +9,7 @@ import { Component, Host, h, EventEmitter, Event } from '@stencil/core';
 export class XmelisekAmbulanceOrderList {
   @Event({ eventName: "entry-clicked"}) entryClicked: EventEmitter<string>;
   @Event({ eventName: "entry-deleted"}) entryDeleted: EventEmitter<string>;
+  @Event({ eventName: "back"}) back: EventEmitter<string>;
 
   orders: any[];
 
@@ -62,15 +63,18 @@ export class XmelisekAmbulanceOrderList {
               <div slot="supporting-text">{"Dátum doručenia: " + this.isoDateToLocale(order.estimatedDelivery)}</div>
               <div slot="supporting-text">{"Status: " + order.status}</div>
               <md-icon slot="start">shopping_cart</md-icon>
-              <md-icon-button slot="end" onClick={() => this.entryClicked.emit(index.toString())}>
+              <md-filled-tonal-icon-button  class="edit-button"
+              slot="end" onClick={() => this.entryClicked.emit(index.toString())}>
                 <md-icon>edit</md-icon>
-              </md-icon-button>
-              <md-icon-button slot="end" onClick={() => this.entryDeleted.emit(index.toString())}>
+              </md-filled-tonal-icon-button>
+              <md-filled-tonal-icon-button class="delete-button"
+              slot="end" onClick={() => this.entryDeleted.emit(index.toString())}>
                 <md-icon>delete</md-icon>
-              </md-icon-button>
+              </md-filled-tonal-icon-button>
             </md-list-item>
           )}
         </md-list>
+        <md-filled-tonal-button onClick={() => this.back.emit("back")}>{"Back"}</md-filled-tonal-button>
       </Host>
     );
   }

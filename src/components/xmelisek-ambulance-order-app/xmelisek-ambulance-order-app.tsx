@@ -35,7 +35,7 @@ export class XmelisekAmbulanceOrderApp {
   }
 
   render() {
-    let element = "list"
+    let element = "menu"
     let entryId = "@new"
     console.log(element)
 
@@ -46,34 +46,51 @@ export class XmelisekAmbulanceOrderApp {
     if (this.relativePath.startsWith("equipment")) {
       element = "equipment";
     }
+    if (this.relativePath.startsWith("list")) {
+      element = "list";
+    }
 
     const navigate = (path: string) => {
       const absolute = new URL(path, new URL(this.basePath, document.baseURI)).pathname;
       window.navigation.navigate(absolute)
     }
 
+    const deleteEntry = (id: string) => {
+      console.log("delete", id);
+      navigate("./list")
+    }
+
     const elementSelector = (element: string) => {
       switch (element) {
+        case "menu": return <xmelisek-ambulance-menu oncard-clicked={(ev: CustomEvent<string>) => navigate(ev.detail)}></xmelisek-ambulance-menu>
         case "editor": return <xmelisek-ambulance-order-editor entry-id={entryId}
           oneditor-closed={() => navigate("./list")} >
         </xmelisek-ambulance-order-editor>
         case "list": return <xmelisek-ambulance-order-list
-          onentry-clicked={(ev: CustomEvent<string>) => navigate("./entry/" + ev.detail)} >
+          onentry-clicked={(ev: CustomEvent<string>) => navigate("./entry/" + ev.detail)}
+          onentry-deleted={(ev: CustomEvent<string>) => deleteEntry(ev.detail)}
+          onBack={() => navigate("./menu")}
+           >
         </xmelisek-ambulance-order-list>
-        case "equipment": return <xmelisek-ambulance-equip-list></xmelisek-ambulance-equip-list>
+        case "equipment": return <xmelisek-ambulance-equip-list
+          onBack={() => navigate("./menu")}
+        ></xmelisek-ambulance-equip-list>
         default: return <div><h1>{"404"}</h1></div>
       }
     }
 
     return (
       <Host>
-        <h1>{"Evidencia a objednávanie vybavenia "}</h1>
+        <div class="header">
+          <h1>{"Evidencia a objednávanie vybavenia "}</h1>
+
+        </div>
         {elementSelector(element)}
 
       </Host>
     );
   }
-  
+
 
 
 }

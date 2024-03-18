@@ -13,7 +13,7 @@ export class XmelisekAmbulanceOrderEditor {
     return (
       <Host>
         <h2>{this.entryId === "@new" ? "Nová objednávka" : "Úprava objednávky"}</h2>
-        <md-filled-text-field label="Názov objednávky" maxlength="255" >
+        <md-filled-text-field label="Názov objednávky" maxlength="255"  >
           <md-icon slot="leading-icon">shopping_cart</md-icon>
         </md-filled-text-field>
 
@@ -70,6 +70,11 @@ export class XmelisekAmbulanceOrderEditor {
             onClick={() => this.editorClosed.emit("store")}>
             <md-icon slot="icon">save</md-icon>
             Uložiť
+          </md-filled-button>
+          <md-filled-button id="cancel"
+            onClick={() => this.editorClosed.emit("cancel")}>
+            <md-icon slot="icon">cancel</md-icon>
+            Zrušiť
           </md-filled-button>
         </div>
       </Host>

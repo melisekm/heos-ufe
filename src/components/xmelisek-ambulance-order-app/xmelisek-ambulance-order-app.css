@@ -9,3 +9,7 @@
   /* center */
   margin: 0 auto;
 }
+
+.header {
+  align-self: center;
+}
