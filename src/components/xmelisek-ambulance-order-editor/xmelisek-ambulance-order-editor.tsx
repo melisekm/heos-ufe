@@ -13,7 +13,7 @@ export class XmelisekAmbulanceOrderEditor {
     return (
       <Host>
         <h2>{this.entryId === "@new" ? "Nová objednávka" : "Úprava objednávky"}</h2>
-        <md-filled-text-field label="Názov objednávky" maxlength="255"  >
+        <md-filled-text-field type="text" label="Názov objednávky" maxlength="255"  >
           <md-icon slot="leading-icon">shopping_cart</md-icon>
         </md-filled-text-field>
 

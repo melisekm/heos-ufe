@@ -10,36 +10,36 @@ import { Component, Host, h, EventEmitter, Event } from '@stencil/core';
 export class XmelisekAmbulanceMenu {
   @Event({ eventName: "card-clicked" }) cardClicked: EventEmitter<string>
 
+  cards = [
+    {
+      title: "Objednávky",
+      icon: "shopping_cart",
+      details: "Vytvorené objednávky a ich správa",
+      path: "./list/"
+    },
+    {
+      title: "Stav vybavenia",
+      icon: "build",
+      details: "Zoznam vybavenia a jeho stav",
+      path: "./equipment/"
+    },
+    {
+      title: "Nová objednávka",
+      icon: "add",
+      details: "Vytvorenie novej objednávky",
+      path: "./entry/@new/"
+    },
+    {
+      title: "Nové vybavenie",
+      icon: "add",
+      details: "Pridanie nového vybavenia.",
+      path: null
+    }
+  ]
   render() {
-    const cards = [
-      {
-        title: "Objednávky",
-        icon: "shopping_cart",
-        details: "Vytvorené objednávky a ich správa",
-        path: "./list/"
-      },
-      {
-        title: "Stav vybavenia",
-        icon: "build",
-        details: "Zoznam vybavenia a jeho stav",
-        path: "./equipment/"
-      },
-      {
-        title: "Nová objednávka",
-        icon: "add",
-        details: "Vytvorenie novej objednávky",
-        path: "./entry/@new/"
-      },
-      {
-        title: "Nové vybavenie",
-        icon: "add",
-        details: "Pridanie nového vybavenia.",
-        path: null
-      }
-    ]
     return (
       <Host>
-        {cards.map(card =>
+        {this.cards.map(card =>
           <div class="card"><div class="card-wrapper">
             <div class="title-section">
               {card.icon?.length
